@@ -1,0 +1,199 @@
+public class Order {
+    public static void main(String[] args) {
+        int zero = 1;
+        int x = 0;//订单数组下标
+
+        String[] name = new String[100];
+        int[] time = new int[100];//点餐时间
+        String[] menu = new String[100];
+        double[] price = new double[100];
+        int[] od = new int[100];//订单序号
+        String[] adress = new String[100];//送餐地址
+        int[] menuNum = new int[100];//点菜份数
+        String[] yuDing = new String[100];//订单状态
+
+        int a = 0;//点赞数
+        int b = 0;//点赞数
+        int c = 0;//点赞数
+        int panduan = 0;//判断是否有此订单
+        Scanner sc = new Scanner(System.in);
+        do {
+            System.out.println("欢迎使用“外卖订餐系统”");
+            System.out.println("******************************");
+            System.out.println("1.我要订餐");
+            System.out.println("2.查看餐袋");
+            System.out.println("3.签收订单");
+            System.out.println("4.删除订单");
+            System.out.println("5.我要点赞");
+            System.out.println("6.退出系统");
+            System.out.println("******************************");
+            System.out.println("请选择：");
+            int num = sc.nextInt();
+            while (num < 1 || num > 6) {
+                System.out.println("您输入的选项没有，重新输入");
+                num = sc.nextInt();
+            }
+            if (num == 1) {
+                od[x] = x + 1;
+                yuDing[x] = "已预订";
+                System.out.println("***我要订餐***");
+                System.out.println("请输入订餐人姓名：");
+                name[x] = sc.next();
+                System.out.println("序号" + "          " + "菜名" + "           " + "单价");
+                System.out.println(1 + "    " + "红烧茄子" + "    " + 24.00);
+                System.out.println(2 + "    " + "糖醋排骨" + "    " + 36.00);
+                System.out.println(3 + "    " + "鱼香肉丝" + "    " + 32.00);
+                System.out.println("请选择您想要点的菜品编号：");
+                int bianHao = sc.nextInt();
+                while (bianHao < 1 || bianHao > 3) {
+                    System.out.println("您选择的菜品没有，再次输入");
+                    bianHao = sc.nextInt();
+                }
+
+                if (bianHao == 1) {
+                    menu[x] = "红烧茄子";
+                    price[x] = 24.00;
+                } else if (bianHao == 2) {
+                    menu[x] = "糖醋排骨";
+                    price[x] = 36.00;
+                } else if (bianHao == 3) {
+                    menu[x] = "鱼香肉丝";
+                    price[x] = 32.00;
+                }
+                System.out.println("请选择您需要的份数：");
+                menuNum[x] = sc.nextInt();
+                while (menuNum[x] < 1) {
+                    System.out.println("您输入的数量不合法，再次选择");
+                    menuNum[x] = sc.nextInt();
+                }
+
+                System.out.println("请选输入送餐时间（送餐时间是10点至20点间整点送餐）：");
+                time[x] = sc.nextInt();
+                while (time[x] < 10 || time[x] > 20) {
+                    System.out.println("您选择的时间不在送餐时间内,再次选择");
+                    time[x] = sc.nextInt();
+                }
+
+                System.out.println("请输入送餐地址");
+                adress[x] = sc.next();
+
+                System.out.println("订餐成功！！！");
+                System.out.println("您订的是：" + menu[x] + " " + menuNum[x] + "份");
+                System.out.println("送餐时间：" + time[x] + "点");
+                System.out.println("餐费：" + menuNum[x] * price[x] + "元" + " "
+                        + "送餐费：6元" + " " + "总计：" + (menuNum[x] * price[x] + 6) + "元");
+
+                System.out.println("输入0返回：");
+                zero = sc.nextInt();
+                while (zero != 0) {
+                    System.out.println("输入错误，再次输入");
+                    zero = sc.nextInt();
+                }
+
+                x++;
+            } else if (num == 2) {
+                zero = 1;
+
+                System.out.println("***查看餐带***");
+                System.out.println("序号" + "          " + "订餐人" + "        " + "餐品信息"
+                        + "           " + "送餐时间" + "          " + "送餐地址"
+                        + "            " + "总金额" + "           " + "订单状态");
+                for (int i = 0; i < x; i++) {
+                    if (od[i] != -1) {
+                        System.out.println(od[i] + "      " + name[i] + "      " + menu[i]
+                                + "       " + time[i] + "        " + adress[i]
+                                + "       " + (menuNum[i] * price[i] + 6)
+                                + "       " + yuDing[i]);
+                    }
+                }
+
+                System.out.println("输入0返回：");
+                zero = sc.nextInt();
+                while (zero != 0) {
+                    System.out.println("输入错误，再次输入");
+                    zero = sc.nextInt();
+                }
+            } else if (num == 3) {
+                zero = 1;
+
+                System.out.println("***签收订单***");
+                System.out.println("请选择要签收的订单的序号：");
+                int numc = sc.nextInt();
+                for (int i = 0; i < od.length; i++) {
+                    if (numc == od[i]) {
+                        yuDing[i] = "已签收";
+                        System.out.println("订单签收成功！");
+                        panduan = 1;
+                    }
+                }
+                if (panduan != 1) {
+                    System.out.println("无此订单");
+                }
+
+
+                System.out.println("输入0返回：");
+                zero = sc.nextInt();
+                while (zero != 0) {
+                    System.out.println("输入错误，再次输入");
+                    zero = sc.nextInt();
+                }
+            } else if (num == 4) {
+                zero = 1;
+                panduan = 0;
+                System.out.println("***删除订单***");
+                System.out.println("请选择要删除的订单的序号：");
+                int numd = sc.nextInt();
+                for (int i = 0; i < od.length; i++) {
+                    if (numd == od[i]) {
+                        od[i] = -1;
+                        System.out.println("订单删除成功！");
+                        panduan = 1;
+                    }
+                }
+                if (panduan != 1) {
+                    System.out.println("无此订单");
+                }
+                System.out.println("输入0返回：");
+                zero = sc.nextInt();
+                while (zero != 0) {
+                    System.out.println("输入错误，再次输入");
+                    zero = sc.nextInt();
+                }
+            } else if (num == 5) {
+                zero = 1;
+                System.out.println("***我要点赞***");
+                System.out.println("序号" + "          " + "菜名" + "           " + "单价");
+                System.out.println(1 + "    " + "红烧茄子" + "    " + 24.00 + " " + a + "赞");
+                System.out.println(2 + "    " + "糖醋排骨" + "    " + 36.00 + " " + b + "赞");
+                System.out.println(3 + "    " + "鱼香肉丝" + "    " + 32.00 + " " + c + "赞");
+                System.out.println("请选择要点赞的菜品的序号：");
+                int zan = sc.nextInt();
+                while (zan < 1 || zan > 3) {
+                    System.out.println("您输入的序号错误，再次输入");
+                    zan = sc.nextInt();
+                }
+                if (zan == 1) {
+                    a++;
+                } else if (zan == 2) {
+                    b++;
+                } else if (zan == 3) {
+                    c++;
+                }
+
+
+                System.out.println("输入0返回：");
+                zero = sc.nextInt();
+                while (zero != 0) {
+                    System.out.println("输入错误，再次输入");
+                    zero = sc.nextInt();
+                }
+            } else if (num == 6) {
+                zero = 1;
+                System.out.println("谢谢使用，欢迎下次光临！");
+                return;
+            }
+
+        } while (zero == 0);
+
+    }
+}
