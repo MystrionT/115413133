@@ -15,10 +15,11 @@ header {
 
 #head {
   background-image: url('https://raw.githubusercontent.com/MystrionT/115413133/refs/heads/main/bg.jpg');
-  background-repeat:no-repeat;
-  background-attachment:fixed;
-  background-position:0px 0px;
-  background-size:cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: 0px 0px;
+  background-size: cover;
 }
 
 #nav .item {
