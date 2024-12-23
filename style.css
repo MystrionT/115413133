@@ -19,7 +19,7 @@ header {
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-position: 0px 0px;
-  background-size: cover;
+  background-size: contain;
 }
 
 #nav .item {
